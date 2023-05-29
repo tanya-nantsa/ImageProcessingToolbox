@@ -31,4 +31,6 @@ DearPyGui library was used to create the graphical user interface.
 
 For detailed desription of the project code refer to the file 'ProjectDocumentation_TanyaNantsa.pdf'.
 
-<img width="545" alt="Screen Shot 2023-05-26 at 4 08 36 PM" src="https://github.com/tanya-nantsa/ImageProcessingToolbox/assets/77226151/e67ae936-aef4-4ff4-bef5-2fb1fdf5fe16">
+<img width="513" alt="Screen Shot 2023-05-29 at 3 47 50 PM" src="https://github.com/tanya-nantsa/ImageProcessingToolbox/assets/77226151/a328d1b4-6401-46ee-bf3c-ac085377b19d">
+
+<img width="513" alt="Screen Shot 2023-05-29 at 3 48 30 PM" src="https://github.com/tanya-nantsa/ImageProcessingToolbox/assets/77226151/0a96d3a2-e53e-49a5-86fa-2898f5e0eaa9">
