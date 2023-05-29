@@ -24,7 +24,7 @@ in a variety of ways.
 Currently the toolbox allows users to crop, scale, flip, rotate, apply zero padding, change the brightness,
 change the contrast, apply filters, and detect edges in their images.
 Additionally, the toolbox does not use pre-defined functions. Instead all image processing functionalities
-are written using using image processing principles and then implemented in the application with the use of 
+are written using image processing principles and then implemented in the application with the use of 
 functions found within the python file 'ImageToolbox.py'.
 
 DearPyGui library was used to create the graphical user interface.
