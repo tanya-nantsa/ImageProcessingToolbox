@@ -275,19 +275,17 @@ def convolution_function(sender, data, user_data):
               [ 1,  1,  1]]
     img = Image.open(filename)
     width, height = img.size
-    # set the kernel value using user input values
-    kernel[0][0] = (get_value(user_data[0]))
-    kernel[0][1] = (get_value(user_data[1]))
-    kernel[0][2] = (get_value(user_data[2]))
-    kernel[1][0] = (get_value(user_data[3]))
-    kernel[1][1] = (get_value(user_data[4]))
-    kernel[1][2] = (get_value(user_data[5]))
-    kernel[2][0] = (get_value(user_data[6]))
-    kernel[2][1] = (get_value(user_data[7]))
-    kernel[2][2] = (get_value(user_data[8]))
+    kernel[0][0] = 2
+    kernel[0][1] = 0
+    kernel[0][2] = 0
+    kernel[1][0] = 0
+    kernel[1][1] = -1
+    kernel[1][2] = 0
+    kernel[2][0] = 0
+    kernel[2][1] = 0
+    kernel[2][2] = -1
     new_image = Image.new(mode='L', size=(width, height), color=0)
     image_gray = img.convert("L")
-    image_gray.show()
 
     # iterate through all pixels in orginal image
     for y in range(height):
@@ -313,27 +311,12 @@ def convolution_function(sender, data, user_data):
     # Save the image to a file
     new_image.save('convolution_image.jpg')
 
-
 def convolution():
-    # creates new window for convolution tool
-    with gui.window(label="Convolution Tool", width=1200, height=1200):
-        add_text("Enter the values you wish to use for the kernel:", indent=10)
+    # creates new window for embossing/convolution tool
+    with gui.window(label="Edge Detection Tool", width=1200, height=1200):
+        add_text("Click button to apply embossing effect to image:", indent=10)
         add_spacer(height=5)
-        with group(horizontal=True): 
-            zero = add_input_int(indent=10,width=30, step=0, step_fast=0)
-            one = add_input_int(indent=50,width=30, step=0, step_fast=0)
-            two = add_input_int(indent=90,width=30, step=0, step_fast=0)
-        with group(horizontal=True): 
-            three = add_input_int(indent=10,width=30, step=0, step_fast=0)
-            four = add_input_int(indent=50,width=30, step=0, step_fast=0)
-            five = add_input_int(indent=90,width=30, step=0, step_fast=0)
-        with group(horizontal=True): 
-            six = add_input_int(indent=10,width=30, step=0, step_fast=0)
-            seven = add_input_int(indent=50,width=30, step=0, step_fast=0)
-            eight = add_input_int(indent=90,width=30, step=0, step_fast=0)
-        add_spacer(height=3)
-        add_button(label="Apply Convolution", indent=10, callback=convolution_function, user_data=[zero,one,two,three,four,five,six,seven,eight]) 
-
+        add_button(label="Apply Embossing", indent=10, callback=convolution_function)   
 
 def min_filtering_function():
     # open image file, convert to greyscale and show image
@@ -434,7 +417,6 @@ def filtering():
         add_button(label="Median Filtering", indent=10, callback=median_filtering_function)
 
 
-# SUPRISE FEATURE - EDGE DETECTION
 def edge_detection_function():
     horizontal=[[-1, -2, -1],
                 [ 0,  0,  0],
@@ -473,8 +455,6 @@ def edge_detection_function():
     # Save the image to a file
     new_image.save('edge_detection_image.jpg')
 
-
-# SUPRISE FEATURE - EDGE DETECTION
 def edge_detection():
     # creates new window for histogram tool
     with gui.window(label="Edge Detection Tool", width=1200, height=1200):
@@ -536,10 +516,10 @@ def histogram():
     # creates the new window for the histogram tool
     with gui.window(label="Histogram Calculation Tool", width=1200, height=1200):
         add_text("Select which option you wish to apply to image:", indent=10)
+        add_spacer(height=2)
+        add_button(label="Enhance Contrast/\nHistogram Equalization", indent=10, callback=histogram_equalization)
         add_spacer(height=5)
         add_button(label="Calculate Histogram", indent=10, callback=calculate_histogram) 
-        add_spacer(height=2)
-        add_button(label="Histogram Equalization", indent=10, callback=histogram_equalization)
     
 # adds the file selector button
 with gui.file_dialog(directory_selector=False, show=False, callback=callback, id="file_dialog_id", width=700 ,height=400):
@@ -618,10 +598,10 @@ with gui.window(label="Welcome to your Digital Image Toolbox!", width=1200, heig
 
     # label for buttons in second row
     with group(horizontal=True):
-        add_text("Zero \nPadding", indent=25) 
-        add_text("Linear \nMapping", indent=95)
-        add_text("Power-Law \nMapping", indent=162)
-        add_text("Histogram \nEqualization", indent=246)
+        add_text("Zero \nPadding", indent=20) 
+        add_text("Change \nBrightness", indent=90)
+        add_text("Change \nContrast", indent=170)
+        add_text("Enhance \nContrast", indent=244)
 
     # creates the third row of buttons and calls to the associated function
     add_spacer(height=5)
@@ -632,8 +612,8 @@ with gui.window(label="Welcome to your Digital Image Toolbox!", width=1200, heig
 
     # label for buttons in third row
     with group(horizontal=True):
-        add_text("Con-\nvolution", indent=20) 
-        add_text("Non-\nLinear \nFiltering", indent=95)
+        add_text("Emboss \nImage", indent=20) 
+        add_text("Filtering", indent=95)
         add_text("Edge \nDetection", indent=170)
 
     # binds the new text font to the user interface
